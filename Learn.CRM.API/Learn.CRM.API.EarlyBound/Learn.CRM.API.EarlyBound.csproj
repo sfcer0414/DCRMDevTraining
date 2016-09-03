@@ -69,6 +69,7 @@
     <Reference Include="System" />
     <Reference Include="System.Activities" />
     <Reference Include="System.Activities.Presentation" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
@@ -90,12 +91,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EarlyBoundSampleCode.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Learn.CRM.API.EntityLib\Learn.CRM.API.EntityLib.csproj">
+      <Project>{9b7e6714-3d53-41f0-8752-3510424153f9}</Project>
+      <Name>Learn.CRM.API.EntityLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
