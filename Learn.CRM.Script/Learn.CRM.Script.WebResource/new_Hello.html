@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="ClientGlobalContext.js.aspx" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="new_process_2_0.js" type="text/javascript"></script>
+</head>
+<body>
+    <h1 id="say"></h1>
+    <div id="nowDate"></div>
+    <input type="text" id="accName" value="" placeholder="請輸入客戶名稱" />
+    <button id="btnExecAction" type="button">執行Action-建立客戶</button>
+</body>
+<script type="text/javascript">
+    $(function () {
+        function _getContext() {
+            var errorMessage = "Context is not available.";
+            if (typeof GetGlobalContext != "undefined")
+            { return GetGlobalContext(); }
+            else
+            {
+                if (typeof Xrm != "undefined") {
+                    return Xrm.Page.context;
+                }
+                else { throw new Error(errorMessage); }
+            }
+        }
+
+        // Handler for .ready() called.
+        var now = new Date();
+        
+        $('#say').text("Hello " + _getContext().getUserName());
+        $('#nowDate').text(now.toString());
+        $('#btnExecAction').click(function btnExecAction_click() {
+            Process.callAction("new_CreateAccount",
+            [
+            {
+                key: "name",
+                type: Process.Type.String,
+                value: $('#accName').val()
+            }
+            ],
+            function (params) {
+                // Success
+                alert("Result = " + params["result"] + "\n");
+            },
+            function (e, t) {
+                // Error
+                alert(e);
+
+                // Write the trace log to the dev console
+                if (window.console && console.error) {
+                    console.error(e + "\n" + t);
+                }
+            });
+        });
+    });
+</script>
+</html>

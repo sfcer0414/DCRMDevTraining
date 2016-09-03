@@ -43,6 +43,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MSXRMTOOLS.Xrm.Page.2016.js" />
+    <Content Include="new_Hello.html" />
+    <Content Include="new_process_2_0.js" />
+    <Content Include="scripts\TestAccount.js" />
+    <None Include="scripts\_references.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -56,7 +61,6 @@
   <ItemGroup>
     <Folder Include="css\" />
     <Folder Include="images\" />
-    <Folder Include="scripts\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\Settings.settings">
